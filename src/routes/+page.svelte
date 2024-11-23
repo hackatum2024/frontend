@@ -11,18 +11,21 @@
 			name: 'VW Golf',
 			price: 45,
 			location: [48.137154, 11.576124] as [number, number], // Munich center
+			image: '/images/cars/green.jpg',
 			details: { transmission: 'Manual', seats: 5, type: 'Compact', rating: 4.8 }
 		},
 		{
 			id: 2,
 			name: 'BMW 3 Series',
 			price: 75,
+			image: '/images/cars/green.jpg',
 			location: [48.135124, 11.581234] as [number, number], // Slightly east
 			details: { transmission: 'Automatic', seats: 5, type: 'Sedan', rating: 4.9 }
 		},
 		{
 			id: 3,
 			name: 'Audi A4',
+			image: '/images/cars/green.jpg',
 			price: 80,
 			location: [48.132154, 11.579124] as [number, number], // Slightly south
 			details: { transmission: 'Automatic', seats: 5, type: 'Sedan', rating: 4.7 }
@@ -105,7 +108,7 @@
 			{#each cars as car, i (car.id + i)}
 				<div class="car-card" class:selected={i === selectedIndex}>
 					<div class="car-image-container">
-						<div class="car-image" />
+						<img src={car.image} alt={car.name} class="car-image" loading="lazy" />
 					</div>
 					<div class="car-info">
 						<div class="car-header">
@@ -375,5 +378,11 @@
 
 	.search-button:active {
 		background: #0056b3;
+	}
+	.car-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.3s ease;
 	}
 </style>
